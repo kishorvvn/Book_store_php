@@ -41,10 +41,8 @@ function fetch_array($result){
                     <div class="card border-info mb-3">
                         <img class="card-img-top" src="{$row['book_image']}" alt="Card image cap">
                     <div class="card-body">
-                        <div class="row">
-                            <h5 class="card-title col-sm-9">{$row['book_title']}</h5>
-                            <p class="card-text ">&#36;{$row['book_price']}</p>
-                        </div>
+                            <h6 class="card-title">{$row['book_title']}</h6>
+                            <p class="card-text">&#36;{$row['book_price']}</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                     <div class="card-footer text-center">
@@ -63,14 +61,13 @@ function get_bookByCategory(){
     global $connection;
     $send_query = mysqli_query($connection, $query);
     if( ! mysqli_num_rows($send_query) ){
-        echo "<h3 class='text-center'>There are no books in this category.</h3>";
+        echo "<h3 class='text-center ml-4 pl-2'> are not available.</h3>";
     }
     while ($row = fetch_array($send_query)) {
         
         $book = <<<DELIMETER
-        <h3>Books in current category</h3>
-<div class="card-deck col-lg-3">
-    <div class="card">
+        
+    <div class="card col-lg-3 col-md-4 col-sm-4 p-0">
         <img class="card-img-top" src="{$row['book_image']}" alt="{$row['book_title']}">
             <div class="card-body">
                 <h5 class="card-title">{$row['book_title']}</h5>
@@ -81,7 +78,8 @@ function get_bookByCategory(){
             <a href="index.php" class="btn btn-info"><i class="fa fa-home"></i> Home</a>
     </div>
     </div>
-</div>
+    
+
 DELIMETER;
         echo $book;
     }
@@ -94,7 +92,7 @@ function get_categories(){
    confirm($query);
     // $send_query returns an array of objects, loop through it and echo
     while($row = mysqli_fetch_array($query)){
-        echo "<a class='dropdown-item' href='categories.php?id={$row['cat_id']}'>{$row['cat_name']}</a>";
+        echo "<a class='dropdown-item' href='categories.php?id={$row['cat_id']}'>{$row['cat_title']}</a>";
     };
 }
 
@@ -107,10 +105,10 @@ function get_product_detail(){
         <div class="container">
     <div class="row mt-3">
         <div class="col-md-4">
-            <div class="card p-2">
+            <div class="card p-1">
                 <div class="card-title">
                 <img class="card-img-top mb-3" src="{$row['book_image']}" alt="{$row['book_title']}">
-                    <h4><a href="#">{$row['book_title']}</a> </h4>
+                    <h4 ><a class="text-info" href="#">{$row['book_title']}</a> </h4>
                     <hr>
                     <h4 class="">&#36;{$row['book_price']}</h4>
                         <div class="ratings">
@@ -124,19 +122,21 @@ function get_product_detail(){
                             </p>
                         </div>
                         <div class="row">
-                        <h5 class="col-sm-6">Author: </h5> <p class="col-sm-6">{$row['book_author']}</p>
+                        <h6 class="col-sm-6">Author: </h6> <p class="col-sm-6">{$row['book_author']}</p>
                         
-                        <h5 class="col-sm-6 mt-0">Published on: </h5> <p class="col-sm-6">{$row['book_publishedDate']}</p>
+                        <h6 class="col-sm-6 mt-0">Published on: </h6> <p class="col-sm-6">{$row['book_publishedDate']}</p>
                        
-                        <h5 class="col-sm-6">ISBN: </h5> <p class="col-sm-6">{$row['book_isbn']}</p>
+                        <h6 class="col-sm-6">ISBN: </h6> <p class="col-sm-6">{$row['book_isbn']}</p>
                         </div>
                         
-                        
+                        <div class="card-footer mx-auto text-center">
                     <form action="">
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="ADD TO CART">
+                        
+                            <button type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</button>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,4 +178,6 @@ DELIMETER;
         echo $book_detail;
     }
 };
+
+
 ?>

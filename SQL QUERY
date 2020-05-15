@@ -1,0 +1,62 @@
+SQL query for bookstore PHP module
+
+INSERT INTO `categories`(`cat_title`) VALUES ("History");
+
+INSERT INTO `categories`(`cat_title`) VALUES ("Education");
+
+INSERT INTO `categories`(`cat_title`) VALUES ("Cooking");
+
+INSERT INTO `categories`(`cat_title`) VALUES ("Arts");
+
+INSERT INTO `categories`(`cat_title`) VALUES ("Sports");
+
+INSERT INTO `categories`(`cat_title`) VALUES ("Fiction");
+_________________________________________________________________________
+CREATE TABLE books(
+book_id INT(11) not null AUTO_INCREMENT PRIMARY KEY,
+    book_title VARCHAR(50) not null,
+    book_author VARCHAR(50) not null,
+    book_piblishedDate DATE not null,
+    book_isbn INT(10) not null,
+    book_price FLOAT(10) not null,
+    book_image VARCHAR(500)not null,
+    book_cat_id INT(11) not null
+)
+
+INSERT INTO `books`(`book_title`, `book_author`, `book_piblishedDate`, `book_isbn`, `book_price`, `book_image`, `book_cat_id`) VALUES ("Ancient Greece", "Kishor", 2015/2/15, 123456-78, 25.99, "http://placehold.it/800x300", 1);
+INSERT INTO `books`(`book_title`, `book_author`, `book_piblishedDate`, `book_isbn`, `book_price`, `book_image`, `book_cat_id`) VALUES ("Organic Chemistry", "Kishor Chauhan", 2015/12/15, 1234-56-78, 28.99, "http://placehold.it/800x300", 2);
+INSERT INTO `books`(`book_title`, `book_author`, `book_piblishedDate`, `book_isbn`, `book_price`, `book_image`, `book_cat_id`) VALUES ("Advances in Physics", "Kishor Chauhan", 2075/2/15, 12-3456-78, 30.99, "http://placehold.it/800x300", 2);
+INSERT INTO `books`(`book_title`, `book_author`, `book_piblishedDate`, `book_isbn`, `book_price`, `book_image`, `book_cat_id`) VALUES ("Cook with me", "Kishor", 2018/9/15, 123-456-78, 35.99, "http://placehold.it/800x300", 3);
+
+
+CREATE TABLE reviews(
+review_id INT(11) not null AUTO_INCREMENT PRIMARY KEY,
+    review_comment TEXT(50) not null,
+    review_rating INT(2) not null,
+    review_book_id INT(11) not null
+)
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a nice book", 3, 1);
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a wonderful book", 4, 1);
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a nice book to have", 4, 2);
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a amazing book", 3, 3);
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a nice book", 3, 4);
+INSERT INTO `reviews`(`review_comment`, `review_rating`, `review_book_id`) VALUES ("This is a wonderful book", 3, 4);
+
+
+CREATE TABLE users(
+user_id INT(11) not null AUTO_INCREMENT PRIMARY KEY,
+    user_first VARCHAR(50) not null,
+    user_last VARCHAR(50) not null,
+    user_email VARCHAR(50) not null,
+    user_username VARCHAR(50) not null,
+    user_password VARCHAR(50) not null
+)
+
+
+
+
+
+
+
+
+

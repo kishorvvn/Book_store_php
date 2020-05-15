@@ -6,9 +6,13 @@
         <!-- Title -->
       
         <!-- /.row -->
+        <h3>Books in current category</h3>
+        <div class="row">
         
+<div class="card-deck row">
         <?php get_bookByCategory(); ?>
-  
+        </div>
+        </div>
         <!-- /.row -->
         
         <?php include(TEMPLATE_FRONT.DS."footer.php");?>  

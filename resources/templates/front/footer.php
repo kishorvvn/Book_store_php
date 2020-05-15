@@ -1,8 +1,11 @@
+
+
 <div class="container">
-<div style="clear:both">
+
         <hr>
 
         <!-- Footer -->
+        <div style="clear:both"></div>
         <footer>
             <div class="row">
                 <div class="col-lg-12">
