@@ -26,11 +26,26 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> -->
     </ul>
-    <form class="loginForm form-inline" style="margin-right:-130px;">
-      <input class="form-control mr-sm-2" style="width:25%" type="text" placeholder="Username" name="username" required >
-      <input class="form-control mr-sm-2 logform" style="width:25%" type="text" placeholder="Password" name="password" required >
-      <button class="btn my-2 my-sm-0 text-white" type="submit">Login</button>
-    </form>
-    <a href="signup.php"><button class="btn my-2 my-sm-0 text-white" type="submit">Sign up</button></a>
+    <?php 
+    if(isset($_SESSION['u_id'])){
+      echo '<form class="loginForm form-inline" action="logout_action.php" method="POST">
+                <button class="btn my-2 my-sm-0 text-white" type="submit" name="submit">Logout</button>
+            </form>';
+    } else {
+      echo '<form class="loginForm form-inline" action="login_action.php" method="POST">
+    
+              <input class="form-control mr-sm-2" style="width:25%" type="text" placeholder="Username" name="username">
+              <input class="form-control mr-sm-2 logform" style="width:25%" type="text" placeholder="Password" name="password" >
+              <button class="btn my-2 my-sm-0 text-white" type="submit" name="submit">Login</button>
+              <a href="signup.php"><button class="btn text-white" type="submit">Sign up</button></a>
+            </form>'
+            ;
+    }
+    
+    ?>
+    
+  
+
+    
     
   </div>
