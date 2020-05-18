@@ -8,53 +8,43 @@
 <?php include(TEMPLATE_FRONT .  "/header.php");?>
 
 
-     <!--Navigation -->
-
-<?php include(TEMPLATE_FRONT .  "/top_nav.php");?>
-
+   
          <!-- Contact Section -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
+         <div id="section6" class="">
+  <div class="container-fluid text-dark text-center">
+    <h1 class="p-3">Contact</h1>
+      <div class="row">
+        <div class="col-md-6">
+       	    <h5>Kishorkumar Chauhan</h5>
+       	    <p>Phone:- 416 617 1424</p>
+              <div class="sociallinks">
+                  <a href="https://www.linkedin.com/in/kishorkumar-chauhan-61a709128/" target="_blank">
+                      <img src="Images/linkdIn.png" alt="Go to linkd In page">
+                  </a>
+                  <a href="https://github.com/kishorvvn" target="_blank">
+                      <img src="Images/GitHubnew.png" alt="Go to git hub page">
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=100048896554362" target="_blank">
+                      <img src="Images/facebooknew1.jpg" alt="Go to facebook page">
+                  </a>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" >
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+       <div class="col-md-6">
+          <form name="sentMessage" id="contactForm" method="post">
+          <?php send_message(); ?>
+           	    <input type="text" name="name" placeholder="Your name" class="form form-control mb-1" required>
+         	    <input type="text" name="email" placeholder="Your e-mail" class="form form-control mb-1" required>
+              <input type="text" name="subject" placeholder="Subject" class="form form-control mb-1" required>
+         	    <textarea  name="message" class="form form-control mb-1" placeholder="Your message" rows="7" required></textarea>
+         	    <button type="submit" name="submit" class="form btn btn-warning m-3">Submit</button>
+          </form>
+          <h5 text-center text-success> <?php $result; ?></h5>
         </div>
+      </div>
+    </div>
+  </div>
+<div class="clear"></div>
 
     </div>
     <!-- /.container -->

@@ -196,7 +196,50 @@ DELIMETER;
         echo $book_detail;
     }
 };
-// log in user
+// send message
+function send_message(){
+    $result = "";
+    if(isset($_POST['submit'])){
+        require '../public/PHPMailerAutoLoad.php';
+        require 'credentials.php';
+
+        $mail = new PHPMailer;
+        $mail -> SMTPDebug = 4;
+        // set mailer to use SMTP
+        $mail -> isSMTP();
+        $mail -> Host = 'smtp.gmail.com';
+        $mail -> SMTPAuth = true;
+        $mail -> Username = EMAIL;
+        $mail -> Password = PASSWORD;
+        // TLS encryption, 'ssl' also accepted
+        $mail -> SMTPSecure = 'tls';
+        $mail -> Port = 587;
+
+        $mail->setFrom($_POST['email'], $_POST['name']);
+        $mail->addAddress('kishorvvn@gmail.com');     // Add a recipient
+                       
+        $mail->addReplyTo($_POST['email'], $_POST['name']);
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = 'Form Submission: ' . $_POST['subject'];
+        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+        $mail->AltBody = $_POST['message'];
+
+        if(!$mail->send()) {
+            $result =  'Message could not be sent. Please try again';
+            $result = 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            $result =  "Thanks " . $_POST['name']. "for contacting us. We'll get back to you soon!";
+        }
+
+
+    }
+}
 
 
 ?>
