@@ -3,6 +3,7 @@
 //turn on output buffering
 ob_start();
 session_start();
+// session_destroy();
 
 defined("DS") ? null : define("DS", '/');
 

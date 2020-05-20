@@ -9,6 +9,7 @@
             <?php include(TEMPLATE_FRONT.DS."caroussel.php") ?>
             <!-- all books -->
                 <div class="row">
+                    
                     <?php get_products();?>
                 </div>
         </div>

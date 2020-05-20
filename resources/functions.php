@@ -94,6 +94,9 @@ function get_bookByCategory(){
             </div>
         <div class="card-footer text-center">
             <a href="index.php" class="btn btn-info"><i class="fa fa-home"></i> Home</a>
+            
+            <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</a>
+                       
     </div>
     </div>
     
@@ -151,7 +154,7 @@ function get_product_detail(){
                     <form action="">
                         <div class="form-group">
                         
-                            <button type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</button>
+                            <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</a>
                         </div>
                     </form>
                     </div>
@@ -240,6 +243,11 @@ function send_message(){
 
     }
 }
+
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+// cart function
+
 
 
 ?>

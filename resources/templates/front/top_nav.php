@@ -16,7 +16,7 @@
         <a class="nav-link" href="#">Admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Checkout</a>
+        <a class="nav-link" href="checkout.php">Checkout</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="contact.php">Contact</a>
@@ -32,10 +32,10 @@
                 <button class="btn my-2 my-sm-0 text-white" type="submit" name="submit">Logout</button>
             </form>';
     } else {
-      echo '<form class="loginForm form-inline" action="login_action.php" method="POST">
+      echo '<form class="loginForm form-inline float-right" action="login_action.php" method="POST">
     
-              <input class="form-control mr-sm-2" style="width:25%" type="text" placeholder="Username" name="username">
-              <input class="form-control mr-sm-2 logform" style="width:25%" type="text" placeholder="Password" name="password" >
+              <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username">
+              <input class="form-control mr-sm-2 logform" type="text" placeholder="Password" name="password" >
               <button class="btn my-2 my-sm-0 text-white" type="submit" name="submit">Login</button>
               <a href="signup.php"><button class="btn text-white" type="submit">Sign up</button></a>
             </form>'
