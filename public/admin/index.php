@@ -3,17 +3,15 @@
 
 <div class="container">
     <?php 
-    if($_SERVER["REQUEST_URI"] == "/ecom/public/admin/"){
+        if($_SERVER["REQUEST_URI"] == "/ecom/public/admin/"){
 
-    }
-    if(!isset($_SESSION['$username'])){
-        redirect("../../public/index.php");
-    }
-    
-    
-    
-    
-    echo $_SERVER["REQUEST_URI"];?>
+        }
+        if(!isset($_SESSION['$username'])){
+            redirect("../../public/index.php");
+        }
+                 echo $_SERVER["REQUEST_URI"];
+                 
+    ?>
     <div class="card">
             <div class="row">
             <div class="col-lg-12 p-3">
@@ -27,7 +25,15 @@
                 </nav>
                 <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
-                    <?php include(TEMPLATE_BACK . "/products.php");?>
+                    <?php ?>
+                    <?php 
+                    if(!isset($_GET['edit_product'])){
+                        include(TEMPLATE_BACK . "/products.php");
+                    } else {
+                        include(TEMPLATE_BACK . "/edit_product.php");
+                    }
+                    ?>
+
                 </div>
                 <div class="tab-pane fade" id="nav-addProduct" role="tabpanel" aria-labelledby="nav-addProduct-tab">
                     <?php include(TEMPLATE_BACK . "/add_product.php");?>

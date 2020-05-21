@@ -247,7 +247,31 @@ function send_message(){
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-// cart function
+// Admin function
+
+function get_admin_products(){
+    $query = query("SELECT * FROM books");
+        confirm($query);
+        while ($row = fetch_array($query)) {
+            $book = <<<DELIMETER
+            <tr>
+            <td>{$row['book_id']}</td>
+            <td>{$row['book_title']}<br>
+              <img class="img img-thumbnail " src="{$row['book_image']}" alt="{$row['book_title']}">
+            </td>
+            <td>{$row['book_cat_id']}</td>
+            <td>{$row['book_author']}</td>
+            <td>{$row['book_isbn']}</td>
+           <td>{$row['book_publishedDate']}</td>
+           <td>&#36; {$row['book_price']}</td>
+           <td>{$row['book_quantity']}</td>
+           <td><a href="index.php?edit_product&id={$row['book_id']}" class="text-black"><i class="fas fa-edit fa-lg"></i></a></td>
+           <td></td>
+        </tr>
+DELIMETER;
+echo $book;
+    }
+}
 
 
 ?>
