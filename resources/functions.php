@@ -54,6 +54,7 @@ function fetch_array($result){
         confirm($query);
         while ($row = fetch_array($query)) {
             $book = <<<DELIMETER
+       
             <div class="col-sm-4 col-lg-3 col-md-4 p-3">
                 <div class="card-deck">
                     <div class="card border-info mb-3">
@@ -247,7 +248,6 @@ function send_message(){
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // cart function
-
 
 
 ?>

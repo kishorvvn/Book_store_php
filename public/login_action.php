@@ -37,6 +37,7 @@
                         exit();
                     } elseif ($hashedPWDCheck == true) {
                         // log in the user
+                        $_SESSION['$username']= $username;
                         redirect("index.php");
                         $_SESSION['u_id']= $row['user_id'];
                         $_SESSION['u_first']= $row['user_first'];
@@ -45,6 +46,7 @@
                         $_SESSION['u_password']= $row['user_password'];
                         // redirect("index.php");
                         header("Location:index.php?login=success");
+                        header("Location:index.php");
                         exit();
                     }
                 }

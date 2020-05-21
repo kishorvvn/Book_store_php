@@ -19,14 +19,14 @@
        	    <h5>Kishorkumar Chauhan</h5>
        	    <p>Phone:- 416 617 1424</p>
               <div class="sociallinks">
-                  <a href="https://www.linkedin.com/in/kishorkumar-chauhan-61a709128/" target="_blank">
-                      <img src="Images/linkdIn.png" alt="Go to linkd In page">
+                  <a class="text-dark" href="https://www.linkedin.com/in/kishorkumar-chauhan-61a709128/" target="_blank">
+                  <i class="fab fa-linkedin fa-2x"></i>
                   </a>
-                  <a href="https://github.com/kishorvvn" target="_blank">
-                      <img src="Images/GitHubnew.png" alt="Go to git hub page">
+                  <a class="text-dark" href="https://github.com/kishorvvn" target="_blank">
+                  <i class="fab fa-github-square fa-2x"></i>
                   </a>
-                  <a href="https://www.facebook.com/profile.php?id=100048896554362" target="_blank">
-                      <img src="Images/facebooknew1.jpg" alt="Go to facebook page">
+                  <a class="text-dark" href="https://www.facebook.com/profile.php?id=100048896554362" target="_blank">
+                  <i class="fab fa-facebook-square fa-2x"></i>
                   </a>
               </div>
             </div>
@@ -46,6 +46,6 @@
   </div>
 <div class="clear"></div>
 
-    </div>
+    
     <!-- /.container -->
 <?php include(TEMPLATE_FRONT .  "/footer.php");?>

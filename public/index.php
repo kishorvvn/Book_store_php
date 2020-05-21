@@ -3,17 +3,20 @@
 <!-- Page Content -->
 <h2> <?php display_message(); ?> </h2>
 <div class="container">
-    <div class="">
-        <div class="">
-            <!-- caroussel -->
+               <!-- caroussel -->
             <?php include(TEMPLATE_FRONT.DS."caroussel.php") ?>
             <!-- all books -->
                 <div class="row">
-                    
-                    <?php get_products();?>
+                
+                
+                <?php get_products();?>
+                
                 </div>
-        </div>
-    </div>
+            </div>
+                    
+            
+       
 </div>
+<div class="clear:both"></div>
 <!-- /.container -->
 <?php include(TEMPLATE_FRONT.DS."footer.php");?>   

@@ -8,6 +8,9 @@
     border-left: none;
     border-top: none;
 }
+.tab-pane{
+    width:auto;
+}
 .useraccess{
     margin-left: 800px;
 }
