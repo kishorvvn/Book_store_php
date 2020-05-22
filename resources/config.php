@@ -11,6 +11,8 @@ defined("TEMPLATE_FRONT") ? null : define('TEMPLATE_FRONT', __DIR__.DS. 'templat
 
 defined("TEMPLATE_BACK") ? null : define('TEMPLATE_BACK', __DIR__.DS. 'templates/back');
 
+defined("UPLOAD_DIR") ? null : define('UPLOAD_DIR', __DIR__.DS. 'uploads');
+
 // define parameters required for database connetion
 
 defined("DB_HOST") ? null : define("DB_HOST", "localhost");

@@ -1,41 +1,56 @@
+<?php 
+// edit_product_inAdmin();
+$query = query("SELECT * FROM books WHERE book_id = " . escape_string($_GET['id']) . "");
+confirm($query);
 
-<h2 class="ml-2">Edit book details</h2>
+while ($row = fetch_array($query)) {
+        $book_title = escape_string($row['book_title']);
+        $book_author = escape_string($row['book_author']);
+        $book_isbn = escape_string($row['book_isbn']);
+        $book_publishedDate = escape_string($row['book_publishedDate']);
+        $book_price = escape_string($row['book_price']);
+        $book_quantity = escape_string($row['book_quantity']);
+        $book_cat_id = escape_string($row['book_cat_id']);
+        $book_image = escape_string($row['book_image']);
+}
+
+edit_product_inAdmin();
+
+
+?>
     <form action="" method="post" enctype="multipart/form-data" class="row p-2">
+    
         <div class="col-lg-6">
             <div class="form-group">
-                <input type="text" name="book_title" placeholder="Book title" class="form-control">
+                <input type="text" name="book_title" value="<?php echo $book_title?>" class="form-control">
             </div>
             <div class="form-group">
-                <input type="text" name="book_author" placeholder="Author" class="form-control">
+                <input type="text" name="book_author" value="<?php echo $book_author?>" class="form-control">
             </div>
             <div class="form-group">
-                <input type="text" name="book_isbn" placeholder="ISBN number" class="form-control">
+                <input type="text" name="book_isbn" value="<?php echo $book_isbn?>" class="form-control">
             </div>
             <div class="form-group">
-                <input type="text" name="book_publishedDate" placeholder="Date published" class="form-control">
+                <input type="date" name="book_publishedDate" value="<?php echo $book_publishedDate?>" class="form-control">
             </div>
             <div class="form-group">
-                <input type="text" name="book_price" placeholder="Price" class="form-control">
+                <input type="text" name="book_price" value="<?php echo $book_price?>" class="form-control">
             </div>
             
         </div><!--Main Content-->
         <!-- SIDEBAR-->
         <aside id="admin_sidebar" class="col-lg-6">
         <div class="form-group">
-                <input type="text" name="book_quantity" placeholder="Quanitity" class="form-control">
+                <input type="number" min = "0" name="book_quantity" value="<?php echo $book_quantity?>" class="form-control">
             </div>
 
             <!-- Product Categories-->
 
             <div class="form-group">
                 <select name="book_cat_id" id="" class="form-control">
-                    <option value="0">Select Category</option>
-                    <option value="1">Select Category</option>
-                    <option value="2">Select Category</option>
-                    <option value="3">Select Category</option>
-                    <option value="4">Select Category</option>
-                    <option value="5">Select Category</option>
-                    <option value="6">Select Category</option>
+                    <option value="">Select Category</option>
+                    <!-- from functions to dynamically show categories -->
+                    <?php show_categories_inAdmin();?>
                 </select>
             </div>
             <!-- Product Brands-->
@@ -43,16 +58,16 @@
             <!-- Product Taauthor-->
             <!-- Product Image -->
             <div class="form-group">
-                <label for="product-title">Book Image</label><br>
+                <img class="img img-thumbnail" style="height:125px;" src="../../resources/uploads/<?php echo $book_image?>" alt="<?php echo $book_title?>">
+                <br>
+                <label for="">Change Image</label><br>
                 <input type="file" name="file">
             </div>
 
             <div class="form-group">
             <input type="submit" name="draft" class="btn btn-warning" value="Draft">
-                <input type="submit" name="publish" class="btn btn-success" value="Publish">
-                
+                <input type="submit" name="update" class="btn btn-success" value="Update">
             </div>
-            <a href="../../public/admin/index.php" class="btn btn-info text-black"><i class="fas fa-arrow-circle-left fa-lg"></i></a>
 
         </aside><!--SIDEBAR-->
     </form>

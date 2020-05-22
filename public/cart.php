@@ -74,7 +74,9 @@
                                 $book_quantity += $value; 
                                 $books = <<<DELIMETER
                                             <tr>
-                                                <td>{$row['book_title']}</td>
+                                                <td>{$row['book_title']}<br>
+                                                <img class="card-img-top img-thumbnail" style="height:15%; width:15%;" src="../resources/uploads/{$row['book_image']}" alt="{$row['book_title']}">
+                                                </td>
                                                 <td>&#36; {$row['book_price']}</td>
                                                 <td><a href="cart.php?remove={$row['book_id']}" class="text-warning"><i class="fas fa-minus-square fa-lg"></i></a>
                                                     &nbsp;{$value} &nbsp;

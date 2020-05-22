@@ -55,18 +55,17 @@ function fetch_array($result){
         while ($row = fetch_array($query)) {
             $book = <<<DELIMETER
        
-            <div class="col-sm-4 col-lg-3 col-md-4 p-3">
-                <div class="card-deck">
-                    <div class="card border-info mb-3">
-                        <img class="card-img-top" src="{$row['book_image']}" alt="Card image cap">
+            <div class="col-lg-2 col-md-3 col-sm-6 p-2">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img class="image card-img-top img-thumbnail" src="../resources/uploads/{$row['book_image']}" alt="Card image cap">
+                        <a href="item.php?id={$row['book_id']}" class="btn btn-info btnfront icon animate"><i class="fas fa-info" aria-hidden="true"></i></a>
                     <div class="card-body">
-                            <h6 class="card-title">{$row['book_title']}</h6>
-                            <p class="card-text">&#36;{$row['book_price']}</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h6 class="card-title text-center mb-1">{$row['book_title']}</h6>
+                            <p class="card-text text-center text-muted">&#36;{$row['book_price']}</p>
+                        
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="item.php?id={$row['book_id']}" class="btn btn-info"><i class="fas fa-info"></i> &nbsp;More info</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -86,8 +85,8 @@ function get_bookByCategory(){
         
         $book = <<<DELIMETER
         
-    <div class="card col-lg-3 col-md-4 col-sm-4 p-0">
-        <img class="card-img-top" src="{$row['book_image']}" alt="{$row['book_title']}">
+    <div class="card col-lg-2 col-md-3 col-sm-6 p-0">
+        <img class="card-img-top w-50 mx-auto" src="../resources/uploads/{$row['book_image']}" alt="{$row['book_title']}">
             <div class="card-body">
                 <h5 class="card-title">{$row['book_title']}</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -123,79 +122,43 @@ function get_product_detail(){
     $query = query("SELECT * FROM books WHERE book_id =" . escape_string($_GET['id']) . " ");
     confirm($query);
     while ($row = fetch_array($query)) {
+        $category = show_category_title_inAdmin($row['book_cat_id']);
         $book_detail = <<<DELIMETER
-        <div class="container">
-    <div class="row mt-3">
-        <div class="col-md-4">
-            <div class="card p-1">
-                <div class="card-title">
-                <img class="card-img-top mb-3" src="{$row['book_image']}" alt="{$row['book_title']}">
-                    <h4 ><a class="text-info" href="#">{$row['book_title']}</a> </h4>
-                    <hr>
-                    <h4 class="">&#36;{$row['book_price']}</h4>
-                        <div class="ratings">
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                4.0 stars
-                            </p>
-                        </div>
-                        <div class="row">
-                        <h6 class="col-sm-6">Author: </h6> <p class="col-sm-6">{$row['book_author']}</p>
-                        
-                        <h6 class="col-sm-6 mt-0">Published on: </h6> <p class="col-sm-6">{$row['book_publishedDate']}</p>
-                       
-                        <h6 class="col-sm-6">ISBN: </h6> <p class="col-sm-6">{$row['book_isbn']}</p>
-                        </div>
-                        
-                        <div class="card-footer mx-auto text-center">
-                    <form action="">
-                        <div class="form-group">
-                        
-                            <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</a>
-                        </div>
-                    </form>
-                    </div>
+
+        <div class="row col-lg-8 ml-auto mr-auto mt-1">
+        <div class="col-sm-5">
+            <img class="card-img-top img-thumbnail" style="height:78%;" src="../resources/uploads/{$row['book_image']}" alt="{$row['book_title']}">
+        </div>
+        <div class="col-sm-7">
+          <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <h4 class="col-sm-8"><a class="text-info" href="#">{$row['book_title']}</a> </h4>
+                    <h4 class="col-sm-4">&#36;{$row['book_price']}</h4>
+                </div>
+                <hr>
+                <div class="row ml-5">
+                        <h6 class="col-sm-5">Author: </h6> <p class="col-sm-5">{$row['book_author']}</p>
+                </div>
+                <div class="row ml-5">
+                        <h6 class="col-sm-5">Published on: </h6> <p class="col-sm-5">{$row['book_publishedDate']}</p>
+                </div>
+                <div class="row ml-5">
+                        <h6 class="col-sm-5">ISBN: </h6> <p class="col-sm-5">{$row['book_isbn']}</p>
+                </div>
+                <div class="row ml-5">
+                        <h6 class="col-sm-5">Category: </h6> <p class="col-sm-5">{$category}</p>
+                </div>
+                <div class="row ml-5">
+                        <h6 class="col-sm-5">Qty available: </h6> <p class="col-sm-5">{$row['book_quantity']}</p>
+                </div>
+                <div class="text-center">
+                <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info mx-auto" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</a>
                 </div>
             </div>
-        </div>
-    <!-- Nav tabs -->
-          
-    <div class="card col-md-8">
-            <div class="row">
-            <div class="col-xs-12 p-3">
-                <nav>
-                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                    <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
-                </div>
-                </nav>
-                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                </div>
-                <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                </div>
-                </div>
-                
-                </div>
-              </div>
+          </div>
         </div>
       </div>
-    </div>
-</div>
 DELIMETER;
         echo $book_detail;
     }
@@ -253,24 +216,130 @@ function get_admin_products(){
     $query = query("SELECT * FROM books");
         confirm($query);
         while ($row = fetch_array($query)) {
+            // need to pass book_cat_id we are getting from $row = fetch_array($query)
+            $category = show_category_title_inAdmin($row['book_cat_id']);
+
             $book = <<<DELIMETER
             <tr>
             <td>{$row['book_id']}</td>
             <td>{$row['book_title']}<br>
-              <img class="img img-thumbnail " src="{$row['book_image']}" alt="{$row['book_title']}">
+            <!-- after uploading book image display image from uploads folder -->
+              <img width='75' class="img img-thumbnail " src="../../resources/uploads/{$row['book_image']}" alt="{$row['book_title']}">
             </td>
-            <td>{$row['book_cat_id']}</td>
+            <td>{$category}</td>
             <td>{$row['book_author']}</td>
             <td>{$row['book_isbn']}</td>
            <td>{$row['book_publishedDate']}</td>
            <td>&#36; {$row['book_price']}</td>
            <td>{$row['book_quantity']}</td>
            <td><a href="index.php?edit_product&id={$row['book_id']}" class="text-black"><i class="fas fa-edit fa-lg"></i></a></td>
-           <td></td>
+           <td><a href="../../resources/templates/back/delete_book.php?id={$row['book_id']}" class="text-danger"><i class="fas fa-trash-alt fa-lg"></i></a></td>
         </tr>
 DELIMETER;
 echo $book;
     }
+}
+
+function add_product_inAdmin(){
+    if(isset($_POST['publish'])){
+        $book_title = escape_string($_POST['book_title']);
+        $book_author = escape_string($_POST['book_author']);
+        $book_isbn = escape_string($_POST['book_isbn']);
+        $book_publishedDate = escape_string($_POST['book_publishedDate']);
+        $book_price = escape_string($_POST['book_price']);
+        $book_quantity = escape_string($_POST['book_quantity']);
+        $book_cat_id = escape_string($_POST['book_cat_id']);
+        // images will be taken as a file and it has a name
+        $book_image = $_FILES['file']['name'];
+        //images will be stored at temp location with temp name before uploading
+        $image_temp_location = $_FILES['file']['tmp_name'];
+        // move uploaded image to the uploads/image.jpeg
+        move_uploaded_file($image_temp_location, UPLOAD_DIR . DS . $book_image);
+
+        $query = query("INSERT INTO books(book_title, book_author, book_publishedDate, book_isbn, book_price, book_image, book_quantity, book_cat_id) VALUES ('{$book_title}', '{$book_author}','{$book_publishedDate}','{$book_isbn}','{$book_price}','{$book_image}','{$book_quantity}','{$book_cat_id}');");
+        confirm($query);
+
+        set_message("Book {$book_title} added sucessfully");
+        redirect("index.php?products");
+
+
+
+
+    }
+}
+function edit_product_inAdmin(){
+    if(isset($_POST['update'])){
+        $book_title = escape_string($_POST['book_title']);
+        $book_author = escape_string($_POST['book_author']);
+        $book_isbn = escape_string($_POST['book_isbn']);
+        $book_publishedDate = escape_string($_POST['book_publishedDate']);
+        $book_price = escape_string($_POST['book_price']);
+        $book_quantity = escape_string($_POST['book_quantity']);
+        $book_cat_id = escape_string($_POST['book_cat_id']);
+        // get book image as a file from file input
+        $book_image = $_FILES['file']['name'];
+
+
+        // if file is uploaded
+        if(!empty($book_image)){
+            $book_image = $_FILES['file']['name'];
+            //images will be stored at temp location with temp name before uploading
+            $image_temp_location = $_FILES['file']['tmp_name'];
+            // move uploaded image to the uploads/image.jpeg
+            move_uploaded_file($image_temp_location, UPLOAD_DIR . DS . $book_image);
+
+            
+        } 
+        
+        // if file is not uploaded
+        else {
+            // images will be taken as a file and it has a name
+            $book_image_query = query("SELECT book_image FROM books WHERE book_id = " . escape_string($_GET['id']) . "");
+            confirm($book_image_query);
+                while ($image = fetch_array($book_image_query)) {
+                    $book_image = $image['book_image'];
+                };
+        }
+        
+
+        $query = query("UPDATE books SET book_title = '{$book_title}', book_author = '{$book_author}', book_isbn = '{$book_isbn}', book_publishedDate = '{$book_publishedDate}', book_price = '{$book_price}', book_quantity = '{$book_quantity}', book_cat_id = '{$book_cat_id}', book_image = '{$book_image}' WHERE book_id = " . escape_string($_GET['id']));
+        confirm($query);
+
+        set_message("Book {$book_title} updated sucessfully");
+        redirect("index.php?products");
+
+
+
+
+    }
+}
+
+// to dynamically show categories in admin
+function show_categories_inAdmin(){
+    // design a sql query
+    $query = query("SELECT * FROM categories");
+    // submit a query to the database connection
+   confirm($query);
+    // $send_query returns an array of objects, loop through it and echo
+    while($row = mysqli_fetch_array($query)){
+        $categories_options = <<<DELIMETER
+        <option value = "{$row['cat_id']}">{$row['cat_title']}</option>
+DELIMETER;
+        echo $categories_options;
+    };
+}
+
+// to dynamically show category title in admin
+// this function is called in get_admin_products() function
+function show_category_title_inAdmin($book_cat_id){
+    // design a sql query
+$cat_query = query("SELECT * FROM categories WHERE cat_id = '{$book_cat_id}'");
+    // submit a query to the database connection
+   confirm($cat_query);
+    // $send_query returns an array of objects, loop through it and echo
+    while($cat_row = fetch_array($cat_query)){
+        return $cat_row['cat_title'];
+    };
 }
 
 

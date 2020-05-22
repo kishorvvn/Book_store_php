@@ -5,4 +5,4 @@
 <?php get_product_detail();?>
 
 <!-- Footer -->
-        <?php include(TEMPLATE_FRONT.DS."footer.php");?>   
+<?php include(TEMPLATE_FRONT.DS."footer.php");?>   

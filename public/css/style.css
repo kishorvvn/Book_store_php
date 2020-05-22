@@ -14,3 +14,39 @@
 .totalTable{
     margin-right: -500px;
 }
+.card:hover .image{
+    transform: scale(1.1, 1.1);
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
+    opacity:0.6;
+    }
+.card .image{
+    transform: scale(1.0, 1.0);
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
+    height:250px;
+}
+.card-img-wrapper{
+    overflow: hidden;
+    position: relative;
+    
+}
+.icon{
+    position: absolute;
+    bottom: -80%;
+    left:30%;
+    right:25%;
+    opacity:0;
+}
+.btnfront{
+    border-radius: 50%;
+    
+}
+.card-img-wrapper:hover .icon{
+    bottom: 60%;
+    opacity: 1;
+}
+.animate{
+    transition: all 0.5s ease-in-out;
+}
+
