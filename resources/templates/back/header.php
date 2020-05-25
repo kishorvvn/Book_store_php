@@ -35,6 +35,6 @@
     <div id="pagecontainer">
 
     <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-info text-white shadow-lg">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top bg-warning shadow-lg">
 <?php include(TEMPLATE_BACK.DS."top_nav.php");?> 
 </nav>

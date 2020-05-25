@@ -93,9 +93,9 @@ function get_bookByCategory(){
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         <div class="card-footer text-center">
-            <a href="index.php" class="btn btn-info"><i class="fa fa-home"></i> Home</a>
+            <a href="index.php" class="btn btn-info"><i class="fa fa-home"></i></a>
             
-            <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span> Add to cart</a>
+            <a href="cart.php?add={$row['book_id']}" type="submit" class="btn btn-info" value="ADD TO CART"><span class="fas fa-cart-plus"></span></a>
                        
     </div>
     </div>
@@ -314,7 +314,7 @@ function edit_product_inAdmin(){
     }
 }
 
-// to dynamically show categories in admin
+// to dynamically show categories in admin#################################################################
 function show_categories_inAdmin(){
     // design a sql query
     $query = query("SELECT * FROM categories");
@@ -342,5 +342,91 @@ $cat_query = query("SELECT * FROM categories WHERE cat_id = '{$book_cat_id}'");
     };
 }
 
+// add categories in admin
+
+function add_categories_inAdmin(){
+    if(isset($_POST['submit'])){
+        
+        $book_cat_title = escape_string($_POST['book_cat_title']);
+       
+        if(empty($book_cat_title)){
+            redirect("index.php?categories");            
+        } 
+        
+        
+        else {
+            
+            $book_cat_query = query("INSERT INTO categories (cat_title) VALUES ('{$book_cat_title}')");
+            confirm($book_cat_query);
+            set_message("Category {$book_cat_title} added sucessfully");
+            redirect("index.php#nav-categories");
+        }
+    }
+}
+
+function show_categories_inAdminPage(){
+             $book_cat_query = query("SELECT * FROM categories");
+            confirm($book_cat_query);
+            while($row = fetch_array($book_cat_query)){
+                $category = <<<DELIMETER
+                <tr>
+                    <td>{$row['cat_id']}</td>
+                    <td>{$row['cat_title']}</td>
+                    <td><a href="../../resources/templates/back/delete_category.php?id={$row['cat_id']}" class="text-danger"><i class="fas fa-trash-alt fa-md"></i></a></td>
+                </tr>
+DELIMETER;
+                echo $category;
+            };
+
+        }
+
+        // carousel images on home page ##############################################################
+
+       function get_user_inAdmin(){
+        $query = query("SELECT * FROM users");
+        confirm($query);
+        while ($row = fetch_array($query)) {
+            // need to pass book_cat_id we are getting from $row = fetch_array($query)
+          
+
+            $user = <<<DELIMETER
+            <tr>
+            <td>{$row['user_id']}</td>
+            <td>{$row['user_first']}</td>
+            <td>{$row['user_last']}</td>
+            <td>{$row['user_email']}</td>
+            <td>{$row['user_username']}</td>
+            <td>{$row['user_role']}</td>
+           
+           <td><a href="index.php?edit_user&id={$row['user_id']}" class="text-black"><i class="fas fa-edit fa-lg"></i></a></td>
+           <td><a href="../../resources/templates/back/delete_user.php?id={$row['user_id']}" class="text-danger"><i class="fas fa-trash-alt fa-lg"></i></a></td>
+        </tr>
+DELIMETER;
+echo $user;
+    }
+}
+
+
+
+function edit_user_inAdmin(){
+    if(isset($_POST['update'])){
+        $user_first = escape_string($_POST['user_first']);
+            $user_last = escape_string($_POST['user_last']);
+            $user_email = escape_string($_POST['user_email']);
+            $user_username = escape_string($_POST['user_username']);
+            $user_role = escape_string($_POST['user_role']);
+        
+        if(empty($user_first ) || empty($user_last) || empty($user_email) || empty($user_username)|| empty($user_role)){
+            redirect("index.php?users");
+        } 
+        else {
+            $query = query("UPDATE users SET user_first = '{$user_first}', user_last = '{$user_last}', user_email = '{$user_email}', user_username = '{$user_username}', user_role = '{$user_role}' WHERE user_id = " . escape_string($_GET['id']));
+        confirm($query);
+
+        set_message("User role {$user_role} added to {$user_first} sucessfully");
+        redirect("index.php?products");
+        }
+    }
+}
 
 ?>

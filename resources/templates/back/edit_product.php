@@ -48,7 +48,7 @@ edit_product_inAdmin();
 
             <div class="form-group">
                 <select name="book_cat_id" id="" class="form-control">
-                    <option value="">Select Category</option>
+                    <option value=""><?php  echo show_category_title_inAdmin($book_cat_id)?></option>
                     <!-- from functions to dynamically show categories -->
                     <?php show_categories_inAdmin();?>
                 </select>

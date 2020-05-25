@@ -6,10 +6,10 @@
         if($_SERVER["REQUEST_URI"] == "/ecom/public/admin/"){
 
         }
-        if(!isset($_SESSION['$username'])){
-            redirect("../../public/index.php");
-        }
-                 echo $_SERVER["REQUEST_URI"];
+        // if(!isset($_SESSION['$u_role'])){
+        //     redirect("../../public/index.php");
+        // }
+                //  echo $_SERVER["REQUEST_URI"];
                  
     ?>
     <div class="card">
@@ -42,7 +42,13 @@
                 <?php include(TEMPLATE_BACK . "/categories.php");?>
                 </div>
                 <div class="tab-pane fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
-                <?php include(TEMPLATE_BACK . "/users.php");?>
+                <?php
+                if(!isset($_GET['edit_user'])){
+                        include(TEMPLATE_BACK . "/users.php");
+                    } else {
+                        include(TEMPLATE_BACK . "/edit_user.php");
+                    }
+                 ?>
                 </div>
                 </div>
                 

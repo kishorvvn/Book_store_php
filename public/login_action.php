@@ -37,17 +37,33 @@
                         exit();
                     } elseif ($hashedPWDCheck == true) {
                         // log in the user
-                        $_SESSION['$username']= $username;
+                            if($row['user_role'] == 'Admin'){
+                                $_SESSION['$username']= $username;
+                                redirect("admin/index.php");
+                                $_SESSION['u_id']= $row['user_id'];
+                                $_SESSION['u_first']= $row['user_first'];
+                                $_SESSION['u_last']= $row['user_last'];
+                                $_SESSION['u_email']= $row['user_email'];
+                                $_SESSION['u_password']= $row['user_password'];
+                                // redirect("index.php");
+                                header("Location:admin/index.php?login=success");
+                                header("Location:admin/index.php");
+                                exit();
+
+                            } else if ($row ['user_role'] =='User'){
+                                $_SESSION['$username']= $username;
                         redirect("index.php");
                         $_SESSION['u_id']= $row['user_id'];
                         $_SESSION['u_first']= $row['user_first'];
                         $_SESSION['u_last']= $row['user_last'];
                         $_SESSION['u_email']= $row['user_email'];
                         $_SESSION['u_password']= $row['user_password'];
+                        $_SESSION['u_role']= $row['user_role'];;
                         // redirect("index.php");
                         header("Location:index.php?login=success");
                         header("Location:index.php");
                         exit();
+                            } 
                     }
                 }
             }

@@ -12,9 +12,9 @@
         <!-- category -->
         <?php include(TEMPLATE_FRONT.DS."category.php") ?>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="../public/admin/index.php">Admin</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="checkout.php">Checkout</a>
       </li>
