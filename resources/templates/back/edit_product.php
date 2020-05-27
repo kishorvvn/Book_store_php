@@ -65,10 +65,11 @@ edit_product_inAdmin();
             </div>
 
             <div class="form-group">
-            <input type="submit" name="draft" class="btn btn-warning" value="Draft">
+            <a  href="../../public/admin/index.php" type="button" name="draft" class="btn btn-warning" value="back">Back</a>
                 <input type="submit" name="update" class="btn btn-success" value="Update">
             </div>
 
         </aside><!--SIDEBAR-->
     </form>
+    
 

@@ -1,4 +1,4 @@
-<a class="navbar-brand" href="../../public/index.php">Pick-a-Book</a>
+<a class="navbar-brand" href="../../public/admin/index.php">Pick-a-Book</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,9 +12,9 @@
         
         php include(TEMPLATE_FRONT.DS."category.php") ?>
       </li> -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#">Admin</a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link" href="../../public/checkout.php">Checkout</a>
       </li>

@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-            <input type="submit" name="draft" class="btn btn-warning" value="Draft">
+            <a  href="../../public/admin/index.php" type="button" name="draft" class="btn btn-warning" value="back">Back</a>
                 <input type="submit" name="publish" class="btn btn-success" value="Publish">
             </div>
 
