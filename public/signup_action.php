@@ -13,6 +13,7 @@
         $email = escape_string($_POST['email']);
         $username = escape_string($_POST['username']);
         $password = escape_string($_POST['password']);
+        $user = escape_string($_POST['user']);
 
         //error handlers
         //check if the field is empty
@@ -44,8 +45,9 @@
 
                     // Insert the user into the database
 
-                    $query = query("INSERT INTO users (user_first, user_last, user_email, user_username, user_password) VALUES ('$first', '$last', '$email', '$username', '$hashedPassword');");
-                    header("Location: signup.php?signup=success");
+                    $query = query("INSERT INTO users (user_first, user_last, user_email, user_username, user_password, user_role) VALUES ('$first', '$last', '$email', '$username', '$hashedPassword', '$user');");
+                    header("Location: index.php?signup=success");
+                    set_message('Sign up success. Please log in again');
                     exit();
 
                 }

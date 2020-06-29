@@ -50,7 +50,7 @@
                                 header("Location:admin/index.php");
                                 exit();
 
-                            } else if ($row ['user_role'] =='User'){
+                            } else if ($row ['user_role'] =='user'){
                                 $_SESSION['$username']= $username;
                         redirect("index.php");
                         $_SESSION['u_id']= $row['user_id'];

@@ -20,6 +20,9 @@
   <div class="form-group">
     <input type="password" class="form-control" name="password" placeholder="Password">
   </div>
+  <div class="form-group">
+    <input type="hidden" class="form-control" name="user" value="user">
+  </div>
   
   <button class="btn btn-warning my-2 my-sm-0 text-white" name="submit" type="submit">Sign up</button>
 </form>
